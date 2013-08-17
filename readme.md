@@ -188,7 +188,7 @@ For full list of params see `{{ myimages:image }}`
 
 ### `{{ myimages:anchors }}`
 
-Returns list containing image tags from specified folder.
+Returns list containing anchor tags from specified folder.
 
 example:
 
