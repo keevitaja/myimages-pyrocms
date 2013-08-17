@@ -202,6 +202,8 @@ For full list of params see `{{ myimages:anchor }}`
 
 ## Stupid example
 
+It would wiser to use myimages:image, but is sure is possible to go this way as well.
+
 	{{ myimages:folder_images name="page_images" }}
 		{{ myimages:image_data id="{{ id }}" }}
 			{{ name }}<br>
