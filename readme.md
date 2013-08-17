@@ -91,17 +91,20 @@ output:
 
 Returns image tag.
 
+If both width and height are not specified, url will point to large image.
+
 example:
 
-	{{ myimages:image id="45e7c41ad7dd006" width="200" }}
+	{{ myimages:image id="45e7c41ad7dd006" width="200" class="my-class" }}
 
 output:
 
-	<img src="http://pyro.localhost/files/thumb/45e7c41ad7dd006/200/auto/fit/test_image.jpg" alt="text in image alt attribute">
+	<img class="my-class" src="http://pyro.localhost/files/thumb/45e7c41ad7dd006/200/auto/fit/test_image.jpg" alt="text in image alt attribute">
 
 ##### params
 
 - `id` - image id (required)
+- `class` - image class (default **image**)
 - `width` - image width (default **auto**)
 - `height` - image height (defaults **auto**)
 - `mode` - image resizing mode (default **fit**), please refer to [pyrocms docs](http://docs.pyrocms.com/2.2/manual/plugins/files)
