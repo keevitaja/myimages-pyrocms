@@ -116,12 +116,12 @@ Returns anchor tag containing image tag
 
 example:
 
-	{{ myimages:image id="8a11326f71e590e" class="my-image" params="test|param,key|value" width="200" wrap="<span>%s</span>" }}
+	{{ myimages:anchor id="8a11326f71e590e" class="my-image" params="test|param,key|value" width="200" wrap="<span>%s</span>" }}
 
 output:
 
-	<a class="my-class" href="http://pyro.localhost/files/large/45e7c41ad7dd006/test_image.jpg" title="text in anchor title attribute">
-		<span><img src="http://pyro.localhost/files/thumb/45e7c41ad7dd006/150/auto/fit/test_image.jpg" alt="text in image alt attribute"></span>
+	<a href="http://pyro.localhost/files/large/8a11326f71e590e/flower.jpg" title="flower title" class="my-image" test="param" key="value">
+		<span><img src="http://pyro.localhost/files/thumb/8a11326f71e590e/200/auto/fit/flower.jpg" alt="flower alt"></span>
 	</a>
 
 ##### params
