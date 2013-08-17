@@ -168,7 +168,9 @@ example:
 	
 ##### params
 
-For folder lookup params see `{{ myimages:folder_images }}` and for full list of tags and other params see `{{ myimages:image_data }}`
+For folder lookup params see `{{ myimages:folder_images }}`
+
+For full list of tags and other params see `{{ myimages:image_data }}`
 
 ### `{{ myimages:images }}`
 
@@ -180,7 +182,9 @@ example:
 
 ##### params
 
-For folder lookup params see `{{ myimages:folder_images }}` and for full list of params see `{{ myimages:image }}`
+For folder lookup params see `{{ myimages:folder_images }}`
+
+For full list of params see `{{ myimages:image }}`
 
 ### `{{ myimages:anchors }}`
 
@@ -192,4 +196,6 @@ example:
 
 ##### params
 
-For folder lookup params see `{{ myimages:folder_images }}` and for full list of params see `{{ myimages:anchor }}`
+For folder lookup params see `{{ myimages:folder_images }}`
+
+For full list of params see `{{ myimages:anchor }}`
