@@ -1,0 +1,226 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Myimages
+{
+    private $ci;
+
+    public function __construct()
+    {
+        $this->ci =& get_instance();
+
+        $this->ci->load->model('myimages_m');
+    }
+
+    // get thumb url
+    public function url_thumb($params, $image_data = false)
+    {
+        if ( ! $image_data)
+        {
+            if ( ! isset($params['id']))
+            {
+                return '';
+            }
+
+            $image_data = $this->ci->myimages_m->get_image(array('id' => $params['id']), 'name');
+
+            if (empty($image_data))
+            {
+                return '';
+            }
+        }
+
+        $width = (isset($params['width'])) ? $params['width'] : 'auto';
+        $height = (isset($params['height'])) ? $params['height'] : 'auto';
+
+        $mode = (isset($params_raw['mode'])) ? 'fill'  : 'fit';
+
+        $segments = array('files', 'thumb', $params['id'], $width, $height, $mode, $image_data['name']);
+
+        return site_url(implode('/', $segments));
+    }
+
+    // get large url
+    public function url_large($params, $image_data = false)
+    {
+        if ( ! $image_data)
+        {
+            if ( ! isset($params['id']))
+            {
+                return '';
+            }
+
+            $image_data = $this->ci->myimages_m->get_image(array('id' => $params['id']), 'name');
+
+            if (empty($image_data))
+            {
+                return '';
+            }
+        }
+
+        $segments = array('files', 'large', $params['id'], $image_data['name']);
+
+        return site_url(implode('/', $segments));
+    }
+
+    // get image data
+    public function image_data($params)
+    {
+        if ( ! isset($params['id']))
+        {
+            return '';
+        }
+
+        $select_fields = 'id, folder_id, name, description as title, mimetype, width, height, alt_attribute as alt';
+
+        $image_data = $this->ci->myimages_m->get_image(array('id' => $params['id']), $select_fields);
+
+        if (empty($image_data))
+        {
+            return '';
+        }
+
+        $image_data['url_thumb'] = $this->url_thumb($params, $image_data);
+        $image_data['url_large'] = $this->url_large($params, $image_data);
+
+        return $image_data;
+    }
+
+    // get image
+    public function image($params)
+    {
+        if ( ! isset($params['id']))
+        {
+            return '';
+        }
+
+        $image_data = $this->ci->myimages_m->get_image(array('id' => $params['id']), 'name, alt_attribute as alt');
+
+        if (empty($image_data))
+        {
+            return '';
+        }
+
+        $class = (isset($params['class'])) ? $params['class'] : 'image';
+
+        $type = ( ! isset($params['width']) and ! isset($params['height'])) ? 'url_large' : 'url_thumb';
+
+        $url = $this->$type($params, $image_data);
+
+        return '<img class="' . $class . '" src="' . $url . '" alt="' . $image_data['alt'] . '">';
+    }
+
+    // get anchor
+    public function anchor($params)
+    {
+        if ( ! isset($params['id']))
+        {
+            return '';
+        }
+
+        $select_fields = 'name, alt_attribute as alt, description as title';
+
+        $image_data = $this->ci->myimages_m->get_image(array('id' => $params['id']), $select_fields);
+
+        if (empty($image_data))
+        {
+            return '';
+        }
+
+        $class = (isset($params['class'])) ? $params['class'] : 'image';
+
+        $url_thumb = $this->url_thumb($params, $image_data);
+        $url_large = $this->url_large($params, $image_data);
+
+        $image = '<img src="' . $url_thumb . '" alt="' . $image_data['alt'] . '">';
+
+        if (isset($params['wrap']))
+        {
+            $image = sprintf($params['wrap'], $image);
+        }
+
+        return '<a class="' . $class . '" href="' . $url_large . '" title="' . $image_data['title'] . '">' . $image . '</a>';
+    }
+
+    // get all image ids from folder
+    public function folder_images($params)
+    {
+        $id = (isset($params['id'])) ? $params['id'] : '';
+        $name = (isset($params['name'])) ? $params['name'] : '';
+        $slug = (isset($params['slug'])) ? $params['slug'] : '';
+
+        $folder_id = $this->ci->myimages_m->get_folder_id($id, $name, $slug);
+
+        if (empty($folder_id))
+        {
+            return '';
+        }
+
+        return $this->ci->myimages_m->get_images($folder_id);
+    }
+
+    // get images data
+    public function images_data($params)
+    {
+        $image_ids = $this->folder_images($params);
+
+        if (empty($image_ids))
+        {
+            return '';
+        }
+
+        $images_data = array();
+
+        foreach ($image_ids as $item)
+        {
+            $params['id'] = $item['id'];
+
+            $images_data[] = $this->image_data($params);
+        }
+
+        return $images_data;
+    }
+
+    // get images
+    public function images($params)
+    {
+        $image_ids = $this->folder_images($params);
+
+        if (empty($image_ids))
+        {
+            return '';
+        }
+
+        $images = '';
+
+        foreach ($image_ids as $item)
+        {
+            $params['id'] = $item['id'];
+
+            $images .= $this->image($params);
+        }
+
+        return $images;
+    }
+
+    // get anchors
+    public function anchors($params)
+    {
+        $image_ids = $this->folder_images($params);
+
+        if (empty($image_ids))
+        {
+            return '';
+        }
+
+        $anchors = '';
+
+        foreach ($image_ids as $item)
+        {
+            $params['id'] = $item['id'];
+
+            $anchors .= $this->anchor($params);
+        }
+
+        return $anchors;
+    }
+}
