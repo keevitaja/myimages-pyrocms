@@ -155,3 +155,17 @@ output:
 - `id` - folder id
 - `name` - folder name
 - `slug` - folder slug
+
+### `{{ myimages:images_data }}`
+
+Returns list containing images data from specified folder.
+
+example:
+
+	{{ myimages:images_data id="1" }}
+		{{ name }} <br>
+	{{ /myimages:images_data }}
+	
+##### params
+
+For folder lookup params see `{{ myimages:folder_images }}` and for full list of tags see `{{ myimages:image_data }}`
