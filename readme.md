@@ -2,7 +2,7 @@
 
 MyImages is a PyroCMS module (plugin) to display images in layout files. It can display image data, image tag and image tag inside an anchor tag. Also can display all images taken from the folder.
 
-- version - 1.0.0
+- version - 1.1.0
 - Author  - Tanel Tammik - keevitaja@gmail.com
 - Support - [PyroCMS forum](https://forum.pyrocms.com/discussion/24748/myimages-module-to-display-images-inside-layout-files)
 
@@ -105,7 +105,7 @@ output:
 ##### params
 
 - `id` - image id (required)
-- `class` - image class (default **image**)
+- `class` - image class (default none)
 - `width` - image width (default **auto**)
 - `height` - image height (default **auto**)
 - `mode` - image resizing mode (default **fit**), please refer to [pyrocms docs](http://docs.pyrocms.com/2.2/manual/plugins/files)
@@ -116,7 +116,7 @@ Returns anchor tag containing image tag
 
 example:
 
-	{{ myimages:anchor id="45e7c41ad7dd006" class="my-class"  width="150" wrap="<span>%s</span>" }}
+	{{ myimages:image id="8a11326f71e590e" class="my-image" params="test|param,key|value" width="200" wrap="<span>%s</span>" }}
 
 output:
 
@@ -127,11 +127,12 @@ output:
 ##### params
 
 - `id` - image id (required)
-- `class` - anchor class (default **image**)
+- `class` - anchor class (default none)
 - `width` - image width (default **auto**)
 - `height` - image height (default **auto**)
 - `mode` - image resizing mode (default **fit**), please refer to [pyrocms docs](http://docs.pyrocms.com/2.2/manual/plugins/files)
 - `wrap` - wrapper for image tag (default none)
+- `params` - extra parameters for anchor tag, some lightboxes require it (default none)
 
 ### `{{ myimages:folder_images }}`
 

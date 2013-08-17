@@ -9,6 +9,7 @@ class Myimages
         $this->ci =& get_instance();
 
         $this->ci->load->model('myimages_m');
+        $this->ci->load->helper('myimages');
     }
 
     // get thumb url
@@ -100,13 +101,19 @@ class Myimages
             return '';
         }
 
-        $class = (isset($params['class'])) ? $params['class'] : 'image';
+        $url_type = ( ! isset($params['width']) and ! isset($params['height'])) ? 'url_large' : 'url_thumb';
 
-        $type = ( ! isset($params['width']) and ! isset($params['height'])) ? 'url_large' : 'url_thumb';
+        $attributes = array(
+            'src' => $this->$url_type($params, $image_data),
+            'alt' => $image_data['alt']
+        );
 
-        $url = $this->$type($params, $image_data);
+        if (isset($params['class']))
+        {
+            $attributes['class'] = $params['class'];
+        }
 
-        return '<img class="' . $class . '" src="' . $url . '" alt="' . $image_data['alt'] . '">';
+        return '<img ' . myimages_attributes($attributes) . '>';
     }
 
     // get anchor
@@ -126,19 +133,41 @@ class Myimages
             return '';
         }
 
-        $class = (isset($params['class'])) ? $params['class'] : 'image';
+        $attributes = array(
+            'src' => $this->url_thumb($params, $image_data),
+            'alt' => $image_data['alt']
+        );
 
-        $url_thumb = $this->url_thumb($params, $image_data);
-        $url_large = $this->url_large($params, $image_data);
-
-        $image = '<img src="' . $url_thumb . '" alt="' . $image_data['alt'] . '">';
+        $image = '<img ' . myimages_attributes($attributes) . '>';
 
         if (isset($params['wrap']))
         {
             $image = sprintf($params['wrap'], $image);
         }
 
-        return '<a class="' . $class . '" href="' . $url_large . '" title="' . $image_data['title'] . '">' . $image . '</a>';
+        $attributes = array(
+            'href' => $this->url_large($params, $image_data),
+            'title' => $image_data['title']
+        );
+
+        if (isset($params['class']))
+        {
+            $attributes['class'] = $params['class'];
+        }
+
+        if (isset($params['params']))
+        {
+            $extra_params = explode(',', $params['params']);
+
+            foreach ($extra_params as $param)
+            {
+                list($key, $val) = explode('|', $param);
+
+                $attributes[$key] = $val;
+            }
+        }
+
+        return '<a ' . myimages_attributes($attributes) . '>' . $image . '</a>';
     }
 
     // get all image ids from folder
