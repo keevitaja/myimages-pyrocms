@@ -115,12 +115,12 @@ Returns anchor tag containing image tag
 
 example:
 
-	{{ myimages:anchor id="45e7c41ad7dd006" class="my-class"  width="150" }}
+	{{ myimages:anchor id="45e7c41ad7dd006" class="my-class"  width="150" wrap="<span>%s</span>" }}
 
 output:
 
 	<a class="my-class" href="http://pyro.localhost/files/large/45e7c41ad7dd006/test_image.jpg" title="text in anchor title attribute">
-		<img src="http://pyro.localhost/files/thumb/45e7c41ad7dd006/150/auto/fit/test_image.jpg" alt="text in image alt attribute">
+		<span><img src="http://pyro.localhost/files/thumb/45e7c41ad7dd006/150/auto/fit/test_image.jpg" alt="text in image alt attribute"></span>
 	</a>
 
 ##### params
@@ -130,6 +130,7 @@ output:
 - `width` - image width (default **auto**)
 - `height` - image height (default **auto**)
 - `mode` - image resizing mode (default **fit**), please refer to [pyrocms docs](http://docs.pyrocms.com/2.2/manual/plugins/files)
+- `wrap` - wrapper for image tag (default none)
 
 ### `{{ myimages:folder_images }}`
 
