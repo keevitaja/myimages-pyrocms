@@ -136,3 +136,21 @@ output:
 Returns list containing image id-s inside a folder.
 
 Folder can be specified with id, slug or a name. One of them is required.
+
+example:
+
+	{{ myimages:folder_images id="1" }}
+		image id: {{ id }} <br>
+	{{ /myimages:folder_images }}
+
+output:
+
+	image id: 8a11326f71e590e
+	image id: 45e7c41ad7dd006
+	image id: e9906155610da81
+
+##### params
+
+- `id` - folder id
+- `name` - folder name
+- `slug` - folder slug
