@@ -187,8 +187,9 @@ class Myimages
         return $this->ci->myimages_m->get_images($folder_id);
     }
 
-    // get images data
-    public function images_data($params)
+    // used by folder functions
+    // not usable by plugin
+    public function folder_array($params, $type)
     {
         $image_ids = $this->folder_images($params);
 
@@ -197,59 +198,44 @@ class Myimages
             return '';
         }
 
-        $images_data = array();
+        $data = array();
 
         foreach ($image_ids as $item)
         {
             $params['id'] = $item['id'];
 
-            $images_data[] = $this->image_data($params);
+            switch ($type)
+            {
+                case 'images_data':
+                    $data[] = $this->image_data($params);
+                    break;
+                case 'images':
+                    $data[] = array('image' => $this->image($params));
+                    break;
+                case 'anchors':
+                    $data[] = array('anchor' => $this->anchor($params));
+                    break;
+            }
         }
 
-        return $images_data;
+        return $data;
+    }
+
+    // get images data
+    public function images_data($params)
+    {
+        return $this->folder_array($params, 'images_data');
     }
 
     // get images
     public function images($params)
     {
-        $image_ids = $this->folder_images($params);
-
-        if (empty($image_ids))
-        {
-            return '';
-        }
-
-        $images = array();
-
-        foreach ($image_ids as $item)
-        {
-            $params['id'] = $item['id'];
-
-            $images[] = array('image' => $this->image($params));
-        }
-
-        return $images;
+        return $this->folder_array($params, 'images');
     }
 
     // get anchors
     public function anchors($params)
     {
-        $image_ids = $this->folder_images($params);
-
-        if (empty($image_ids))
-        {
-            return '';
-        }
-
-        $anchors = array();
-
-        foreach ($image_ids as $item)
-        {
-            $params['id'] = $item['id'];
-
-            $anchors[] = array('anchor' => $this->anchor($params));
-        }
-
-        return $anchors;
+        return $this->folder_array($params, 'anchors');
     }
 }

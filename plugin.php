@@ -2,7 +2,7 @@
 
 class Plugin_Myimages extends Plugin
 {
-    public $version = '1.1.1';
+    public $version = '1.2.0';
 
     public $name = array(
         'en' => 'MyImages',
@@ -17,7 +17,9 @@ class Plugin_Myimages extends Plugin
     {
         $this->load->library('myimages');
 
-        if ( ! method_exists($this->myimages, $method))
+        $excluded = array('folder_array');
+
+        if ( ! method_exists($this->myimages, $method) or in_array($method, $excluded))
         {
             show_error('MyImages: plugin function "' . $method . '" is not available', 500);
         }
