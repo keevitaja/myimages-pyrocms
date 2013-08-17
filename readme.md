@@ -84,7 +84,7 @@ output:
 
 - `id` - image id (required)
 - `width` - image width (default **auto**)
-- `height` - image height (defaults **auto**)
+- `height` - image height (default **auto**)
 - `mode` - image resizing mode (default **fit**), please refer to [pyrocms docs](http://docs.pyrocms.com/2.2/manual/plugins/files)
 
 ### `{{ myimages:image }}`
@@ -106,5 +106,25 @@ output:
 - `id` - image id (required)
 - `class` - image class (default **image**)
 - `width` - image width (default **auto**)
-- `height` - image height (defaults **auto**)
+- `height` - image height (default **auto**)
+- `mode` - image resizing mode (default **fit**), please refer to [pyrocms docs](http://docs.pyrocms.com/2.2/manual/plugins/files)
+
+### `{{ myimages:anchor }}`
+
+Returns anchor tag containing image tag
+
+example:
+
+	{{ myimages:anchor id="45e7c41ad7dd006" class="my-class"  width="150" }}
+
+output:
+
+	<a class="my-class" href="http://pyro.localhost/files/large/45e7c41ad7dd006/test_image.jpg" title="text in anchor title attribute"><img src="http://pyro.localhost/files/thumb/45e7c41ad7dd006/150/auto/fit/test_image.jpg" alt="text in image alt attribute"></a>
+
+##### params
+
+- `id` - image id (required)
+- `class` - image class (default **image**)
+- `width` - image width (default **auto**)
+- `height` - image height (default **auto**)
 - `mode` - image resizing mode (default **fit**), please refer to [pyrocms docs](http://docs.pyrocms.com/2.2/manual/plugins/files)
