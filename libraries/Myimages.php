@@ -219,13 +219,13 @@ class Myimages
             return '';
         }
 
-        $images = '';
+        $images = array();
 
         foreach ($image_ids as $item)
         {
             $params['id'] = $item['id'];
 
-            $images .= $this->image($params);
+            $images[] = array('image' => $this->image($params));
         }
 
         return $images;
@@ -241,13 +241,13 @@ class Myimages
             return '';
         }
 
-        $anchors = '';
+        $anchors = array();
 
         foreach ($image_ids as $item)
         {
             $params['id'] = $item['id'];
 
-            $anchors .= $this->anchor($params);
+            $anchors[] = array('anchor' => $this->anchor($params));
         }
 
         return $anchors;

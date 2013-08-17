@@ -2,7 +2,7 @@
 
 class Plugin_Myimages extends Plugin
 {
-    public $version = '1.1.0';
+    public $version = '1.1.1';
 
     public $name = array(
         'en' => 'MyImages',

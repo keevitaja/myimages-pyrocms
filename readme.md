@@ -181,6 +181,8 @@ Returns list containing image tags from specified folder.
 example:
 
 	{{ myimages:images id="1" width="200" }}
+		{{ image }}
+	{{ /myimages:images }}
 
 ##### params
 
@@ -195,6 +197,8 @@ Returns list containing anchor tags from specified folder.
 example:
 
 	{{ myimages:anchors id="1" width="200" }}
+		{{ anchor }}
+	{{ /myimages:anchors }}
 
 ##### params
 
