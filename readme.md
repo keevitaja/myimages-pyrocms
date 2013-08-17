@@ -199,3 +199,14 @@ example:
 For folder lookup params see `{{ myimages:folder_images }}`
 
 For full list of params see `{{ myimages:anchor }}`
+
+## Stupid example
+
+	{{ myimages:folder_images name="page_images" }}
+		{{ myimages:image_data id="{{ id }}" }}
+			{{ name }}<br>
+			{{ myimages:anchor id="{{ id }}" width="200" }}<br>
+			{{ alt }}
+			<hr>
+		{{ /myimages:image_data }}
+	{{ /myimages:folder_images }}
