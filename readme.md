@@ -119,12 +119,20 @@ example:
 
 output:
 
-	<a class="my-class" href="http://pyro.localhost/files/large/45e7c41ad7dd006/test_image.jpg" title="text in anchor title attribute"><img src="http://pyro.localhost/files/thumb/45e7c41ad7dd006/150/auto/fit/test_image.jpg" alt="text in image alt attribute"></a>
+	<a class="my-class" href="http://pyro.localhost/files/large/45e7c41ad7dd006/test_image.jpg" title="text in anchor title attribute">
+		<img src="http://pyro.localhost/files/thumb/45e7c41ad7dd006/150/auto/fit/test_image.jpg" alt="text in image alt attribute">
+	</a>
 
 ##### params
 
 - `id` - image id (required)
-- `class` - image class (default **image**)
+- `class` - anchor class (default **image**)
 - `width` - image width (default **auto**)
 - `height` - image height (default **auto**)
 - `mode` - image resizing mode (default **fit**), please refer to [pyrocms docs](http://docs.pyrocms.com/2.2/manual/plugins/files)
+
+### `{{ myimages:folder_images }}`
+
+Returns list containing image id-s inside a folder.
+
+Folder can be specified with id, slug or a name. One of them is required.
