@@ -22,9 +22,9 @@ Returns url of the thumb image.
 ##### params
 
 - `id` - image id (required)
-- `width` - image width (defaults to auto)
-- `height` - image height (defaults to auto)
-- `mode` - image resizing mode (defaults to fit), please refer to [pyrocms docs](http://docs.pyrocms.com/2.2/manual/plugins/files)
+- `width` - image width (default *auto*)
+- `height` - image height (defaults *auto*)
+- `mode` - image resizing mode (default *fit*), please refer to [pyrocms docs](http://docs.pyrocms.com/2.2/manual/plugins/files)
 
 ### `{{ myimages:url_large }}`
 
