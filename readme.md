@@ -86,3 +86,22 @@ output:
 - `width` - image width (default **auto**)
 - `height` - image height (defaults **auto**)
 - `mode` - image resizing mode (default **fit**), please refer to [pyrocms docs](http://docs.pyrocms.com/2.2/manual/plugins/files)
+
+### `{{ myimages:image }}`
+
+Returns image tag.
+
+example:
+
+	{{ myimages:image id="45e7c41ad7dd006" width="200" }}
+
+output:
+
+	<img src="http://pyro.localhost/files/thumb/45e7c41ad7dd006/200/auto/fit/test_image.jpg" alt="text in image alt attribute">
+
+##### params
+
+- `id` - image id (required)
+- `width` - image width (default **auto**)
+- `height` - image height (defaults **auto**)
+- `mode` - image resizing mode (default **fit**), please refer to [pyrocms docs](http://docs.pyrocms.com/2.2/manual/plugins/files)
