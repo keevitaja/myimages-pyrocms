@@ -15,9 +15,19 @@ All methods in library Myimages.php can be called from plugin.
 
 ### `{{ myimages:url_thumb }}`
 
-Returns url of the thumb image
+Returns url of the thumb image.
 
 ##### params
 
-`id` - id of the image
+- `id` - image id
+- `width` - image width
+- `height` - image height
+- `mode` - image resizing mode, please refer to [pyrocms docs](http://docs.pyrocms.com/2.2/manual/plugins/files)
 
+### `{{ myimages:url_large }}`
+
+Returns url of the large image.
+
+##### params
+
+- `id` - image id
