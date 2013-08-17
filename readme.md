@@ -7,13 +7,17 @@ MyImages is a PyroCMS module (plugin) to display images in layout files. It can 
 
 ## Install
 
-Just copy module to your modules folder and install it. Backend in admin section is not available. So do not go looking for it.
+Just copy module to your modules folder and install it. Backend in admin section is not available.
 
 ## Plugin
 
 All methods in library Myimages.php can be called from plugin.
 
-### `url_thumb`
+### `{{ myimages:url_thumb }}`
 
-test
+Returns url of the thumb image
+
+##### params
+
+`id` - id of the image
 
