@@ -17,6 +17,8 @@ All methods in library Myimages.php can be called from plugin.
 
 Returns url of the thumb image.
 
+example:
+
 	{{ myimages:url_thumb id="45e7c41ad7dd006" width="200" height="150" mode="fit" }}
 
 output:
