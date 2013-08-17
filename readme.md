@@ -2,7 +2,7 @@
 
 MyImages is a PyroCMS module (plugin) to display images in layout files. It can display image data, image tag and image tag inside an anchor tag. Also can display all images taken from the folder.
 
-- version - 1.1.0
+- version - 1.1.1
 - Author  - Tanel Tammik - keevitaja@gmail.com
 - Support - [PyroCMS forum](https://forum.pyrocms.com/discussion/24748/myimages-module-to-display-images-inside-layout-files)
 
