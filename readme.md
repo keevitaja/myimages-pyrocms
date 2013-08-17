@@ -19,12 +19,14 @@ Returns url of the thumb image.
 
 	{{ myimages:url_thumb id="45e7c41ad7dd006" width="200" height="150" mode="fit" }}
 
+	http://pyro.localhost/files/thumb/45e7c41ad7dd006/200/150/fit/test_image.jpg
+
 ##### params
 
 - `id` - image id (required)
-- `width` - image width (default *auto*)
-- `height` - image height (defaults *auto*)
-- `mode` - image resizing mode (default *fit*), please refer to [pyrocms docs](http://docs.pyrocms.com/2.2/manual/plugins/files)
+- `width` - image width (default **auto**)
+- `height` - image height (defaults **auto**)
+- `mode` - image resizing mode (default **fit**), please refer to [pyrocms docs](http://docs.pyrocms.com/2.2/manual/plugins/files)
 
 ### `{{ myimages:url_large }}`
 
