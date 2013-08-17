@@ -19,6 +19,8 @@ Returns url of the thumb image.
 
 	{{ myimages:url_thumb id="45e7c41ad7dd006" width="200" height="150" mode="fit" }}
 
+output:
+
 	http://pyro.localhost/files/thumb/45e7c41ad7dd006/200/150/fit/test_image.jpg
 
 ##### params
