@@ -2,7 +2,7 @@
 
 class Module_Myimages extends Module
 {
-    public $version = '1.2.1';
+    public $version = '1.2.2';
 
     public function info()
     {
