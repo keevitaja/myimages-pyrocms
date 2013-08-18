@@ -2,7 +2,7 @@
 
 class Plugin_Myimages extends Plugin
 {
-    public $version = '1.2.0';
+    public $version = '1.2.1';
 
     public $name = array(
         'en' => 'MyImages',
@@ -17,9 +17,14 @@ class Plugin_Myimages extends Plugin
     {
         $this->load->library('myimages');
 
-        $excluded = array('folder_array');
+        if ( ! method_exists($this->myimages, $method))
+        {
+            show_error('MyImages: plugin function "' . $method . '" is not available', 500);
+        }
 
-        if ( ! method_exists($this->myimages, $method) or in_array($method, $excluded))
+        $reflection = new ReflectionMethod($this->myimages, $method);
+
+        if ( ! $reflection->isPublic())
         {
             show_error('MyImages: plugin function "' . $method . '" is not available', 500);
         }

@@ -189,7 +189,7 @@ class Myimages
 
     // used by folder functions
     // not usable by plugin
-    public function folder_array($params, $type)
+    private function folder_array($params, $type)
     {
         $image_ids = $this->folder_images($params);
 
